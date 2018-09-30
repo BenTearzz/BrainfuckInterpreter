@@ -1,5 +1,6 @@
 # Brainfuck Interpreter
 from readchar import readchar
+from sys import argv
 
 class BrainfuckInterpreter():
     def __init__(self):
@@ -11,16 +12,29 @@ class BrainfuckInterpreter():
 
         self.cell_value_max = 255   #255 is the max ASCII value
 
-        code = input("Brainfuck code: ")
+        code = None
+        if len(argv[1:]) > 0:       # Check if an argument was passed
+            file = argv[1].strip()  # Set file to the first argument
+            try:
+                f = open(file, "r") # Open file for reading
+                code = f.read()     # Read file and save the content in variable "code"
+            except Exception as err:
+                print("Error: ", str(err))
+                raise SystemExit
+
+        if code == None:
+            code = input("Brainfuck code: ")
+
         if code.strip() != "":
             self.interpret(code.strip())
+        else:
+            print("No code")
+            raise SystemExit
 
     def interpret(self, code):
-        char = ""
         c = 0   # Start at character 0
 
         while c < len(code):
-            #print(self.cells, "["+char+"]") # Uncomment if you want to see what happens step-by-step
             char = code[c]  # Character / Symbol is the currentcharacter in our code
 
             # Shifting
@@ -44,6 +58,7 @@ class BrainfuckInterpreter():
             elif char == ".":
                 print(chr(self.cells[self.index]), end="") # end="" to print on one-line (default: "\n")
 
+            #print(self.cells, "["+char+"]") # Uncomment if you want to see what happens step-by-step
             c += 1
 
         #print(self.cells)
