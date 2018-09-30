@@ -20,7 +20,7 @@ class BrainfuckInterpreter():
         c = 0   # Start at character 0
 
         while c < len(code):
-            print(self.cells, "["+char+"]") # Uncomment if you want to see what happens step-by-step
+            #print(self.cells, "["+char+"]") # Uncomment if you want to see what happens step-by-step
             char = code[c]  # Character / Symbol is the currentcharacter in our code
 
             # Shifting
