@@ -4,7 +4,8 @@ A Brainfuck interpreter made with Python.
 Requires the module **readchar** to get keyboard input.
 Install by running: `pip install readchar`
 
-Can be started from a console or by double-clicking the script. File loading will be added later, currently you just copy-paste your code.  
+Load a file containing Brainfuck code. (Parsed as an argument) `Interpreter.py myfile.ext` (All file extensions supported).
+Copy-pasting code is also possible, simply double-click Interpreter.py or run it without any arguments: `Interpreter.py`
 
 Every character except for `+-<>[],.` will be ignored.
 
