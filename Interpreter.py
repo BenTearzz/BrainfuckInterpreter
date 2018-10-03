@@ -4,6 +4,8 @@ from sys import argv
 
 class BrainfuckInterpreter():
     def __init__(self):
+
+        # Settings & Setup
         self.cells = [0] # Create a cell
         self.index = 0   # Start at cell 0
 
@@ -32,10 +34,16 @@ class BrainfuckInterpreter():
             raise SystemExit
 
     def interpret(self, code):
+        show_cells_enabled = False
+        show_cells_character = "!"
         c = 0   # Start at character 0
 
         while c < len(code):
             char = code[c]  # Character / Symbol is the currentcharacter in our code
+
+            # Cells
+            if char == show_cells_enabled and char == show_cells_character:
+                print(self.cells)
 
             # Shifting
             if char == ">" or char == "<":
@@ -61,7 +69,7 @@ class BrainfuckInterpreter():
             #print(self.cells, "["+char+"]") # Uncomment if you want to see what happens step-by-step
             c += 1
 
-        #print(self.cells)
+        print(self.cells)
         input() # So that it doesn't just close when done
 
     # Shifting
