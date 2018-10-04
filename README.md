@@ -7,7 +7,7 @@ Install by running: `pip install readchar`
 Load a file containing Brainfuck code. (Parsed as an argument) `Interpreter.py myfile.ext` (All file extensions supported).
 Copy-pasting code is also possible, simply double-click Interpreter.py or run it without any arguments: `Interpreter.py`
 
-Every character except for `+-<>[],.` will be ignored.
+Every character except for `+-` `<>` `[]` `,.` will be ignored.
 
 ----
 
