@@ -11,7 +11,8 @@ Every character except for `+-` `<>` `[]` `,.` will be ignored.
 
 ----
 
-The interpreter allows for an extra character to show current cells. To enable the character, go to line 37 and set the variable "show_cells_enabled" to True. By default the current cells character is an exclamation mark. **!**, so when **!** is in your code, it will show a list of current cells.  
+The interpreter allows for an extra character to show current cells. To enable the character, go to line 37 and set the variable "show_cells_enabled" to True. By default the current cells character is an exclamation mark **!**. So when **!** is in your code, it will show a list of current cells and also what cell you're on.  
+You can change the character used to show the current cells by changing "show_cells_character" on line 38.  
 
 **Example 1:**  
 ```
