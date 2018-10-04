@@ -17,7 +17,11 @@ The interpreter allows for an extra character to show current cells. To enable t
 ```
 +++>!
 ```  
-This will output `[3, 0]`  
+This will output
+```
+[3, 0]
+    ^
+```  
 
 **Example 2:**  
 ```
@@ -29,8 +33,11 @@ This will output `[3, 0]`
 This will output:
 ```
 [0]
+ ^
 [3, 0]
+    ^
 [1, 1]
+ ^
 ```  
 
 ----

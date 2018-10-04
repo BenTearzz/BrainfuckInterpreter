@@ -41,9 +41,22 @@ class BrainfuckInterpreter():
         while c < len(code):
             char = code[c]  # Character / Symbol is the currentcharacter in our code
 
-            # Cells
-            if char == show_cells_enabled and char == show_cells_character:
+            # Show Cells
+            if char == show_cells_character and show_cells_enabled: # If character == "show_cells_character" and "show_cells_enabled" is True
+                cells_str = ", ".join(str(i) for i in self.cells)
                 print(self.cells)
+
+                i = 0
+                for pos, i_ in enumerate(cells_str): # Iterate through every single character
+                    if i_ == ",":
+                        i += 1
+
+                    if i >= self.index:
+                        if pos == 0:
+                            pos = -2
+
+                        print(" " * (pos + 2) + " ^")
+                        break
 
             # Shifting
             if char == ">" or char == "<":
@@ -69,7 +82,7 @@ class BrainfuckInterpreter():
             #print(self.cells, "["+char+"]") # Uncomment if you want to see what happens step-by-step
             c += 1
 
-        print(self.cells)
+        #print("\n" + str(self.cells))
         input() # So that it doesn't just close when done
 
     # Shifting
