@@ -34,7 +34,7 @@ class BrainfuckInterpreter():
             raise SystemExit
 
     def interpret(self, code):
-        show_cells_enabled = False
+        show_cells_enabled = True
         show_cells_character = "!"
         c = 0   # Start at character 0
 
