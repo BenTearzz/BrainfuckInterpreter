@@ -14,13 +14,13 @@ Every character except for `+-` `<>` `[]` `,.` will be ignored.
 ### Table Of Contents
 * [Brainfuck Interpreter](#brainfuckinterpreter)
 * [Table of Contents](#table-of-contents)
-* [Executable Release](#executable)
+* [Executable Release](#executable-release)
 * [Extra Character](#extra-character-optional)
 * [Bracket Matching](#bracket-matching)
 
 ----
 
-### Executable
+### Executable Release
 A Windows executable file for the Brainfuck interpreter can be found and downloaded here: **[Releases](https://github.com/BenTearzz/BrainfuckInterpreter/releases)**
 
 ----
