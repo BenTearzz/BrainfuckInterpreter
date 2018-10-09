@@ -1,4 +1,4 @@
-# BrainfuckInterpreter
+## BrainfuckInterpreter
 A Brainfuck interpreter written in Python.
 
 Requires the module **readchar** to get keyboard input.
@@ -11,12 +11,21 @@ Every character except for `+-` `<>` `[]` `,.` will be ignored.
 
 ----
 
-#### Executable
+### Table Of Contents
+* [Brainfuck Interpreter](#brainfuckinterpreter)
+* [Table of Contents](#table-of-contents)
+* [Executable Release](#executable)
+* [Extra Character](#extra-character-optional)
+* [Bracket Matching](#bracket-matching)
+
+----
+
+### Executable
 A Windows executable file for the Brainfuck interpreter can be found and downloaded here: **[Releases](https://github.com/BenTearzz/BrainfuckInterpreter/releases)**
 
 ----
 
-#### Extra Character (optional)
+### Extra Character (optional)
 The interpreter allows for an extra character to show current cells. To enable the character, go to line 37 and set the variable "show_cells_enabled" to True. By default the current cells character is an exclamation mark **!**. So when **!** is in your code, it will show a list of current cells and also what cell you're on.  
 You can change the character used to show the current cells by changing "show_cells_character" on line 38.  
 
@@ -49,5 +58,5 @@ This will output:
 
 ----
 
-#### Bracket Matching
+### Bracket Matching
 The interpreter uses a simple matching system for handling brackets which can be seen in function `cell_loop`. If there's no matching opening bracket `[` or closing bracket `]` it goes to the next character.
