@@ -44,7 +44,6 @@ class BrainfuckInterpreter():
 			# Show Cells
 			if char == show_cells_character and show_cells_enabled: # If character == "show_cells_character" and "show_cells_enabled" is True
 				cells_str = ", ".join(str(i) for i in self.cells)
-				print(self.cells)
 
 				i = 0
 				for pos, i_ in enumerate(cells_str): # Iterate through every single character
@@ -66,7 +65,9 @@ class BrainfuckInterpreter():
 					if self.cells[i] > 99:
 						width += 1
 
-				print(" " * (pos + width) + " ^")
+				print(f"\n{self.cells}")
+				print(f"{' ' * (pos + width)} ^")
+				print(f"index: {self.index} | value: {self.cells[self.index]}\n")
 
 			# Shifting
 			if char == ">" or char == "<":
