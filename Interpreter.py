@@ -21,8 +21,6 @@ def main():
 
 	global cells
 	cells = [0]
-
-	global index
 	index = 0
 
 	code = input("Brainfuck code: ")
@@ -74,7 +72,7 @@ def main():
 		# I/O
 		elif char == ",":
 			cells[index] = ord(readchar())
-			print(cells[index])
+			print(chr(cells[index]))
 
 		elif char == ".":
 			print(chr(cells[index]), end="") # to print on one-line (default: "\n")
@@ -101,7 +99,7 @@ def main():
 
 		character += 1
 
-	input("\nDone")
+	input("\033[33;1m\n\n------\n Done\n------\033[0m")
 	main()
 
 
@@ -111,28 +109,25 @@ def main():
 
 def loop(char, code):
 	match = 0
-	i = 0
+	index = 0
 
-	if char == "[":
-		add = 1
-	else:
-		add = -1
+	add = 1 if char == "[" else -1
 
 	while match != 1:
-		if i == len(code) * add:
+		if index == len(code) * add:
 			return 0
 
-		if code[i] == "[":
+		if code[index] == "[":
 			match -= add
 
-		if code[i] == "]":
+		if code[index] == "]":
 			match += add
 
-		i += add
+		index += add
 
 	if char == "[":
-		return i
+		return index
 	else:
-		return i + 1
+		return index + 1
 
 main()
