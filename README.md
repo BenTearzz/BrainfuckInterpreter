@@ -1,52 +1,70 @@
 ## BrainfuckInterpreter
+
 A Brainfuck interpreter written in Python.
 
-Requires the module **readchar** to get keyboard input.
-Install by running: `pip install readchar`
-
-Load a file containing Brainfuck code. (Parsed as an argument) `Interpreter.py myfile.ext` (All file extensions supported).
-Copy-pasting code is also possible, simply double-click Interpreter.py or run it without any arguments: `Interpreter.py`
-
-Every character except for `+-` `<>` `[]` `,.` will be ignored.
-
-----
+---
 
 ### Table Of Contents
-* [Brainfuck Interpreter](#brainfuckinterpreter)
-* [Table of Contents](#table-of-contents)
-* [Executable Release](#executable-release)
-* [Extra Character](#extra-character-optional)
-* [Bracket Matching](#bracket-matching)
 
-----
+* [Table of Contents](#table-of-contents)
+* [Requirements](#requirements)
+* [How To Run](#how-to-run)
+* [Executable Release](#executable-release)
+* [Debug Character](#debug-character)
+
+---
+
+### Requirements
+
+The module **readchar** is required to get keyboard input.
+This can be installed by running: `pip install readchar`
+
+---
+
+### How To Run
+
+To run the interpreter you double-click `Interpreter.py` or call it from the command-line.
+
+You can copy-paste code directly into the console, or you can load a file by typing `file:some_filename.bf` (supports any file extension).
+
+Any character other than `+-` `<>` `[]` `,.` `!` will be ignored.
+
+---
 
 ### Executable Release
+
 A Windows executable file for the Brainfuck interpreter can be found and downloaded here: **[Releases](https://github.com/BenTearzz/BrainfuckInterpreter/releases)**
 
-----
+---
 
-### Extra Character (optional)
-The interpreter allows for an extra character to show current cells. To enable the character, go to line 37 and set the variable "show_cells_enabled" to True. By default the current cells character is an exclamation mark **!**. So when **!** is in your code, it will show a list of current cells and also what cell you're on.  
-You can change the character used to show the current cells by changing "show_cells_character" on line 38.  
+### Debug Character
+
+The interpreter allows for an extra character to show the value of all cells and show what cell is currently selected (the default character is `!` ).
 
 **Example 1:**  
-```
+
+```brainfuck
 +++>!
-```  
-This will output
+```
+
+This will output:
+
 ```
 [3, 0]
     ^
-```  
+```
 
 **Example 2:**  
-```
+
+```brainfuck
 !       # [0]
 +++>!   # [3, 0]
 +       # [3, 1]
 <--!    # [1, 1]
-```  
+```
+
 This will output:
+
 ```
 [0]
  ^
@@ -54,9 +72,6 @@ This will output:
     ^
 [1, 1]
  ^
-```  
+```
 
-----
-
-### Bracket Matching
-The interpreter uses a simple matching system for handling brackets which can be seen in function `cell_loop`. If there's no matching opening bracket `[` or closing bracket `]` it goes to the next character.
+---

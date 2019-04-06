@@ -1,11 +1,12 @@
 # Brainfuck Interpreter
 from readchar import readchar
-from sys import argv
 
-import ctypes
+import platform
 
-kernel32 = ctypes.windll.kernel32
-kernel32.SetConsoleMode(kernel32.GetStdHandle(-11), 7)
+if platform.system() == "Windows":
+	import ctypes
+	kernel32 = ctypes.windll.kernel32
+	kernel32.SetConsoleMode(kernel32.GetStdHandle(-11), 7)
 
 #####''#####
 # - LOOP - #
@@ -52,6 +53,7 @@ def loop(char, code):
 # - MAIN LOOP - #
 #######'''#######
 
+debug_character = "!"
 character = 0
 
 global cells
@@ -61,6 +63,10 @@ global index
 index = 0
 
 code = input("Brainfuck code: ")
+
+if "file:" in code:
+	with open(code[code.index("file:") + 5:].strip()) as f:
+		code = f.read()
 
 while character < len(code):
 	char = code[character]
@@ -111,7 +117,7 @@ while character < len(code):
 		print(chr(cells[index]), end="") # to print on one-line (default: "\n")
 
 	# DEBUG
-	elif char == "!":
+	elif char == debug_character:
 		print("[", end="")
 
 		for cell in range(len(cells)):
