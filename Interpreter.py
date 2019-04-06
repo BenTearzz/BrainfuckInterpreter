@@ -17,40 +17,44 @@ def main():
 	os.system("clear || cls") # Clear Console
 
 	debug_character = "!"
-	character = 0
 
+	# ---------------- #
 	global cells
 	cells = [0]
 	index = 0
+	character = 0
+	# ---------------- #
 
 	code = input("Brainfuck code: ")
 
+	# File Load
 	if "file:" in code:
 		with open(code[code.index("file:") + 5:].strip()) as f:
 			code = f.read()
 
+	# Interpret
 	while character < len(code):
 		char = code[character]
 
 		# INDEX
 		if char == "<":
-			if index != 0:
+			if index != 0:			# Decrement cell index
 				index -= 1
 
-		elif char == ">":
+		elif char == ">":			# Increment cell index
 			index += 1
 
 			if index > len(cells) - 1:
 				cells.append(0)
 
 		# VALUES
-		elif char == "+":
+		elif char == "+":			# Increment cell value
 			cells[index] += 1
 
 			if cells[index] > 255:
 				cells[index] = 0
 
-		elif char == "-":
+		elif char == "-":			# Decrement cell value
 			cells[index] -= 1
 
 			if cells[index] < 0:
@@ -58,40 +62,39 @@ def main():
 
 		# LOOPING
 		elif char == "[":
-			if cells[index] != 0:
+			if cells[index] != 0: # If current cell is NOT 0 -> pass
 				pass
 			else:
 				character += loop(char, code[character:])
 
 		elif char == "]":
-			if cells[index] == 0:
+			if cells[index] == 0: # If current cell IS 0 -> pass
 				pass
 			else:
 				character += loop(char, code[:character])
 
 		# I/O
 		elif char == ",":
-			cells[index] = ord(readchar())
-			print(chr(cells[index]))
+			cells[index] = ord(readchar())	 # Get keyboard character
+			print(chr(cells[index]))		 # Print keyboard input character
 
 		elif char == ".":
-			print(chr(cells[index]), end="") # to print on one-line (default: "\n")
+			print(chr(cells[index]), end="") # Print current cell value
 
 		# DEBUG
 		elif char == debug_character:
-			
 			print("[", end="")
 			i = 0
 
 			for cell in cells:
 
 				if i == index:
-					print(f"\033[1;32;40m{cell}\033[0m", end="")
+					print(f"\033[1;32;40m{cell}\033[0m", end="") # Highlight current cell
 				else:
 					print(f"{cell}", end="")
 
 				if i < len(cells) - 1:
-					print(", ", end="")
+					print(", ", end="")	# Add comma seperator when at the last cell
 
 				i += 1
 
@@ -99,6 +102,7 @@ def main():
 
 		character += 1
 
+	# End
 	input("\033[33;1m\n\n------\n Done\n------\033[0m")
 	main()
 
