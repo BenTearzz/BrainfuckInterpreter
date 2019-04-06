@@ -81,16 +81,21 @@ def main():
 
 		# DEBUG
 		elif char == debug_character:
-			print("[", end="")
 
-			for cell in range(len(cells)):
-				if cell == index:
+			print("[", end="")
+			i = 0
+
+			for cell in cells:
+
+				if i == index:
 					print(f"\033[1;32;40m{cell}\033[0m", end="")
 				else:
 					print(f"{cell}", end="")
 
-				if cell < len(cells) - 1:
+				if i < len(cells) - 1:
 					print(", ", end="")
+
+				i += 1
 
 			print("]")
 
