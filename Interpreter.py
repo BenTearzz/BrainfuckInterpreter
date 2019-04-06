@@ -81,7 +81,7 @@ def main():
 
 		# DEBUG
 		elif char == debug_character:
-
+			
 			print("[", end="")
 			i = 0
 
@@ -114,35 +114,25 @@ def loop(char, code):
 	i = 0
 
 	if char == "[":
+		add = 1
+	else:
+		add = -1
 
-		while match != 1:
-			if i == len(code):
-				return 0
+	while match != 1:
+		if i == len(code) * add:
+			return 0
 
-			if code[i] == "[":
-				match -= 1
+		if code[i] == "[":
+			match -= add
 
-			if code[i] == "]":
-				match += 1
+		if code[i] == "]":
+			match += add
 
-			i += 1
+		i += add
 
+	if char == "[":
 		return i
-
-	if char == "]":
-
-		while match != 1:
-			if i == -len(code):
-				return 0
-
-			if code[i] == "]":
-				match -= 1
-
-			if code[i] == "[":
-				match += 1
-
-			i -= 1
-
+	else:
 		return i + 1
 
 main()
